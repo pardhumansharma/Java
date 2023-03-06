@@ -1,0 +1,69 @@
+Jashu, Preeti, and Rita where playing a game, where they call each other randomly and they need to tell their middle character of their names. First Preeti called Jashu then Jashu called Rita then Rita called Jashu
+
+Input Format
+
+Jashu
+
+Constraints
+
+Declare name in the form of String
+If the string name has odd no of character then print the middle character, if the string name has even no of character then print the middle two characters
+Output Format
+
+s
+
+Sample Input 0
+
+Jashu
+Sample Output 0
+
+s
+Contest ends in 17 hours
+Submissions: 28
+Max Score: 5
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+ 
+1
+import java.util.Scanner;
+2
+​
+3
+public class MiddleCharacter {
+4
+public static void main(String[] args) {
+5
+Scanner sc = new Scanner(System.in);
+6
+String name = sc.nextLine();
+7
+int len = name.length();
+8
+String middleChar;
+9
+​
+10
+  if (len % 2 == 0) {
+11
+     int mid = len / 2;
+12
+     middleChar = name.substring(mid - 1, mid + 1);
+13
+  } else {
+14
+     int mid = len / 2;
+15
+     middleChar = name.substring(mid, mid + 1);
+16
+  }
+17
+​
+18
+  System.out.println(middleChar);
+19
+}
+20
+}
