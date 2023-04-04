@@ -1,0 +1,148 @@
+Hari ask Rama to make an arithmatic calculator which will accpet two integer values. but at a time only one opatation(+,-,*,/) he can do.Help rama to create this using labda expression.
+
+Input Format
+
+First line will contain two ineteger values on which we have to perform the operation
+Second line will contain one integer value which will describe the operation
+1 addition
+2 subtraction
+3 multiplication
+4 division
+
+Constraints
+
+number should be integer value
+
+Output Format
+
+one integer value represnting result of the operation if wrong input then print Invalid
+
+Sample Input 0
+
+7 8
+2
+Sample Output 0
+
+-1
+Sample Input 1
+
+4 5
+5
+Sample Output 1
+
+Invalid
+Contest ends in 16 hours
+Submissions: 18
+Max Score: 5
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+ ********************************************************************
+1
+import java.util.Scanner;
+2
+import java.util.function.BiFunction;
+3
+​
+4
+public class Main {
+5
+​
+6
+    public static void main(String[] args) {
+7
+        Scanner sc = new Scanner(System.in);
+8
+        
+9
+        // Input the two integer values
+10
+        int a = sc.nextInt();
+11
+        int b = sc.nextInt();
+12
+        
+13
+        // Input the arithmetic operation to be performed
+14
+        int op = sc.nextInt();
+15
+        
+16
+        // Declare a BiFunction object to hold the lambda expression for the chosen operation
+17
+        BiFunction<Integer, Integer, Integer> func;
+18
+        
+19
+        // Set the lambda expression based on the chosen operation
+20
+        switch (op) {
+21
+            case 1:
+22
+                func = (x, y) -> x + y;
+23
+                break;
+24
+            case 2:
+25
+                func = (x, y) -> x - y;
+26
+                break;
+27
+            case 3:
+28
+                func = (x, y) -> x * y;
+29
+                break;
+30
+            case 4:
+31
+                func = (x, y) -> {
+32
+                    if (y == 0) {
+33
+                        System.out.println("Invalid");
+34
+                        return null;
+35
+                    } else {
+36
+                        return x / y;
+37
+                    }
+38
+                };
+39
+                break;
+40
+            default:
+41
+                System.out.println("Invalid");
+42
+                return;
+43
+        }
+44
+        
+45
+        // Call the lambda expression to perform the chosen operation
+46
+        Integer result = func.apply(a, b);
+47
+        if (result != null) {
+48
+            System.out.println(result);
+49
+        }
+50
+    }
+51
+​
+52
+}
+53
+​
