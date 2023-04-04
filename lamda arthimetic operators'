@@ -1,0 +1,86 @@
+Ram's teacher is giving the task to Ram to do the basic arithmetic opertions on two integer values.At a time he can do only one operation. Help the Ram to do the same using Lambda expression.
+
+Input Format
+
+First line will contain two ineteger values on which we have to perform the operation
+Second line will contain one integer value which will describe the operation
+1 addition
+2 subtraction
+3 multiplication
+4 division
+
+Constraints
+
+number should be integer value
+
+Output Format
+
+one integer value represnting result of the operation if wrong input then print Invalid
+
+Sample Input 0
+
+4 5
+2
+Sample Output 0
+
+-1
+Sample Input 1
+
+3 7.9
+1
+Sample Output 1
+
+Invalid
+****************************************************************
+import java.util.Scanner;
+import java.util.function.BiFunction;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Input the two integer values
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        
+        // Input the arithmetic operation to be performed
+        int op = sc.nextInt();
+        
+        // Declare a BiFunction object to hold the lambda expression for the chosen operation
+        BiFunction<Integer, Integer, Integer> func;
+        
+        // Set the lambda expression based on the chosen operation
+        switch (op) {
+            case 1:
+                func = (x, y) -> x + y;
+                break;
+            case 2:
+                func = (x, y) -> x - y;
+                break;
+            case 3:
+                func = (x, y) -> x * y;
+                break;
+            case 4:
+                func = (x, y) -> {
+                    if (y == 0) {
+                        System.out.println("Invalid");
+                        return null;
+                    } else {
+                        return x / y;
+                    }
+                };
+                break;
+            default:
+                System.out.println("Invalid");
+                return;
+        }
+        
+        // Call the lambda expression to perform the chosen operation
+        Integer result = func.apply(a, b);
+        if (result != null) {
+            System.out.println(result);
+        }
+    }
+
+}
