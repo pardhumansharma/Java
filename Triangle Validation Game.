@@ -1,0 +1,119 @@
+Keshav and Prateek are playing a game. Keshav is going to tell the length of three sides of triangle and Prateek need to tell that whether it is valid or not. Triangle have a rule that sum of two sides is always greater than the third side. Help Prateek to identify that it is valid or not. If it is not following the rule then generate InvalidTriangleException which will be handled using try and catch.
+
+Input Format
+
+First line will contain three space separated integer values representing three sides of triangle.
+
+Constraints
+
+Maximum length of side can be 20.
+
+Output Format
+
+Valid Triangle/ Invalid Triangle/ Invalid Input
+
+Sample Input 0
+
+5 10 3
+Sample Output 0
+
+Invalid Triangle
+Sample Input 1
+
+16 21 14
+Sample Output 1
+
+Invalid Input
+Contest ends in 15 hours
+Submissions: 70
+Max Score: 5
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+ 
+1
+import java.util.Scanner;
+2
+​
+3
+public class Triangle {
+4
+​
+5
+    public static void main(String[] args) {
+6
+        // create a scanner object to read input
+7
+        Scanner sc = new Scanner(System.in);
+8
+​
+9
+        // read three sides of the triangle
+10
+        int a = sc.nextInt();
+11
+        int b = sc.nextInt();
+12
+        int c = sc.nextInt();
+13
+​
+14
+        // close the scanner
+15
+        sc.close();
+16
+​
+17
+        // check if the input is valid
+18
+        if (a <= 0 || b <= 0 || c <= 0 || a > 20 || b > 20 || c > 20) {
+19
+            System.out.println("Invalid Input");
+20
+            return;
+21
+        }
+22
+​
+23
+        // check if the triangle is valid
+24
+        try {
+25
+            if (a + b > c && b + c > a && c + a > b) {
+26
+                System.out.println("Valid Triangle");
+27
+            } else {
+28
+                throw new InvalidTriangleException();
+29
+            }
+30
+        } catch (InvalidTriangleException e) {
+31
+            System.out.println("Invalid Triangle");
+32
+        }
+33
+    }
+34
+}
+35
+​
+36
+// create a custom exception class for invalid triangle
+37
+class InvalidTriangleException extends Exception {
+38
+​
+39
+    public InvalidTriangleException() {
+40
+        super("The sum of two sides must be greater than the third side");
+41
+    }
+42
+}
