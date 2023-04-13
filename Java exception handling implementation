@@ -1,0 +1,172 @@
+Rahul has implemented Puzzle Game in Java in which he wants to read a 2 digit number from the user at runtime. He wanted to implement exception handling if the user enters a number which is not a 2-digit number.
+
+He has decided that if any user enters any incorrect number then generate NumberFormatException and allow the user to re-enter the number with a message Please Re-enter a 2 digit number.
+
+If the user again enters an incorrect input then print You are not authorized to play the game. Help Rahul to implement the exception handling using nested try-catch block.
+
+If user enters a valid input in any of the 2 attempts then print Your Input is XY. (where XY is the 2-digit number entered by the user)
+
+Input Format
+
+First line reads the original number entered by the user
+Second line reads the number re-entered by the user
+
+Constraints
+
+Number > 0
+
+Output Format
+
+Prints
+
+if the Valid Input is given by the user in first attempt
+
+    Your Input is XY 
+if the Valid Input is given by the user in Second attempt
+
+    Please Re-enter a 2 digit number
+    Your Input is XY
+if the Valid Input is not given by the user in Both attempts
+
+    Please Re-enter a 2 digit number
+    You are not authorized to play the game
+Sample Input 0
+
+25
+102
+Sample Output 0
+
+Your Input is 25
+Sample Input 1
+
+100
+10
+Sample Output 1
+
+Please Re-enter a 2 digit number
+Your Input is 10
+Sample Input 2
+
+100
+200
+Sample Output 2
+
+Please Re-enter a 2 digit number
+You are not authorized to play the game
+Contest ends in 15 hours
+Submissions: 68
+Max Score: 5
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+ 
+1
+import java.util.Scanner;
+2
+​
+3
+public class PuzzleGame {
+4
+​
+5
+    public static void main(String[] args) {
+6
+        // create a scanner object to read input
+7
+        Scanner sc = new Scanner(System.in);
+8
+​
+9
+        // read the original number entered by the user
+10
+        String input = sc.nextLine();
+11
+​
+12
+        // check if the input is valid
+13
+        try {
+14
+            // try to parse the input as an integer
+15
+            int number = Integer.parseInt(input);
+16
+​
+17
+            // check if the number is a 2-digit number
+18
+            if (number > 9 && number < 100) {
+19
+                // print the valid input
+20
+                System.out.println("Your Input is " + number);
+21
+            } else {
+22
+                // throw a NumberFormatException
+23
+                throw new NumberFormatException();
+24
+            }
+25
+        } catch (NumberFormatException e) {
+26
+            // handle the first invalid input
+27
+            System.out.println("Please Re-enter a 2 digit number");
+28
+​
+29
+            // read the number re-entered by the user
+30
+            String input2 = sc.nextLine();
+31
+​
+32
+            // check if the input is valid
+33
+            try {
+34
+                // try to parse the input as an integer
+35
+                int number2 = Integer.parseInt(input2);
+36
+​
+37
+                // check if the number is a 2-digit number
+38
+                if (number2 > 9 && number2 < 100) {
+39
+                    // print the valid input
+40
+                    System.out.println("Your Input is " + number2);
+41
+                } else {
+42
+                    // throw a NumberFormatException
+43
+                    throw new NumberFormatException();
+44
+                }
+45
+            } catch (NumberFormatException e2) {
+46
+                // handle the second invalid input
+47
+                System.out.println("You are not authorized to play the game");
+48
+            }
+49
+        }
+50
+​
+51
+        // close the scanner
+52
+        sc.close();
+53
+    }
+54
+}
